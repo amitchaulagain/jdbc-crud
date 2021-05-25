@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Scanner;
 
 /**
  * Insert PrepareStatement JDBC Example
@@ -23,15 +24,43 @@ public class InsertPStatementExample {
 
     public void insertRecord() throws SQLException {
         System.out.println(INSERT_USERS_SQL);
+
+        Scanner scanner= new Scanner(System.in);
+
+        System.out.println("Enter id");
+        int id=scanner.nextInt();
+        System.out.println("Enter name");
+        String name=scanner.next();
+
+        System.out.println("Enter email");
+        String email=scanner.next();
+
+        System.out.println("Enter country");
+        String country=scanner.next();
+
+
+        System.out.println("Enter password");
+        String password=scanner.next();
+
+
+
+
+
+
+
+
+
+
+
         // Step 1: Establishing a Connection
         try (Connection connection = JDBCUtils.getConnection();
             // Step 2:Create a statement using connection object
             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)) {
-            preparedStatement.setInt(1, 1);
-            preparedStatement.setString(2, "Tony");
-            preparedStatement.setString(3, "tony@gmail.com");
-            preparedStatement.setString(4, "US");
-            preparedStatement.setString(5, "secret");
+            preparedStatement.setInt(1, id);
+            preparedStatement.setString(2, name);
+            preparedStatement.setString(3, email);
+            preparedStatement.setString(4, country);
+            preparedStatement.setString(5, password);
 
             System.out.println(preparedStatement);
             // Step 3: Execute the query or update query
